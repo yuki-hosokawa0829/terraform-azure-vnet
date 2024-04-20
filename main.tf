@@ -3,7 +3,7 @@ resource "azurerm_virtual_network" "example" {
   location            = var.location
   resource_group_name = var.resource_group_name
   address_space       = [local.network_range]
-  dns_servers         = [cidrhost(cidrsubnet(local.network_range, local.number_of_subnets, 0), 4), "168.63.129.15"]
+  dns_servers         = [cidrhost(cidrsubnet(local.network_range, local.number_of_subnets, 0), 4), "168.63.129.16"]
 }
 
 resource "azurerm_subnet" "example" {
