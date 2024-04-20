@@ -1,7 +1,7 @@
 variables {
   prefix              = "prefix"
   resource_group_name = "rg-name"
-  location            = "japanwest"
+  location            = "japaneast"
   network_range       = "192.168.0.0/24"
   number_of_subnets   = 3
 }
