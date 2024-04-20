@@ -1,7 +1,3 @@
-provider "azurerm" {
-  features {}
-}
-
 resource "azurerm_virtual_network" "example" {
   name                = "vn-${var.prefix}"
   location            = var.location
