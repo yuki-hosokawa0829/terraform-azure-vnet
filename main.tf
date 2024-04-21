@@ -49,7 +49,7 @@ resource "azurerm_virtual_network" "example01" {
 }
 
 resource "azurerm_subnet" "example01" {
-  count                = var.number_of_subnets
+  count                = var.number_of_peering_subnets
   name                 = "peer-subnet-${count.index}"
   resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.example01.name
@@ -57,7 +57,7 @@ resource "azurerm_subnet" "example01" {
 }
 
 resource "azurerm_network_security_group" "example01" {
-  count               = var.number_of_subnets
+  count               = var.number_of_peering_subnets
   name                = "peer-nsg-${var.prefix}"
   location            = var.location
   resource_group_name = var.resource_group_name
@@ -76,7 +76,7 @@ resource "azurerm_network_security_group" "example01" {
 }
 
 resource "azurerm_subnet_network_security_group_association" "example01" {
-  count                     = var.number_of_subnets
+  count                     = var.number_of_peering_subnets
   subnet_id                 = azurerm_subnet.example01[count.index].id
   network_security_group_id = azurerm_network_security_group.example01[count.index].id
 }

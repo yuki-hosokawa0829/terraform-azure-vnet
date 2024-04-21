@@ -27,3 +27,8 @@ variable "number_of_subnets" {
   description = "The number of subnets to create within the virtual network."
   type        = number
 }
+
+variable "number_of_peering_subnets" {
+  description = "The number of subnets to create within the virtual network."
+  type        = number
+}

@@ -5,6 +5,7 @@ variables {
   network_range       = "192.168.0.0/24"
   peer_network_range = "172.16.0.0/16"
   number_of_subnets   = 3
+  number_of_peering_subnets = 2
 }
 
 provider "azurerm" {
@@ -145,11 +146,11 @@ run "check_peer_subnet_address_range" {
   }
 }
 
-run "check_number_of_subnet" {
+run "check_number_of_peering_subnets" {
   command = plan
 
   assert {
-    condition     = length(azurerm_subnet.example01.*) == var.number_of_subnets
-    error_message = "Number of subnets should be ${var.number_of_subnets}"
+    condition     = length(azurerm_subnet.example01.*) == var.number_of_peering_subnets
+    error_message = "Number of subnets should be ${var.number_of_peering_subnets}"
   }
 }
