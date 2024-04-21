@@ -44,7 +44,7 @@ resource "azurerm_virtual_network" "example01" {
   name                = "peer-vn-${var.prefix}"
   location            = var.location
   resource_group_name = var.resource_group_name
-  address_space       = [var.network_range]
+  address_space       = [var.peer_network_range]
   dns_servers         = [cidrhost(cidrsubnet(var.peer_network_range, var.number_of_subnets, 0), 4), "168.63.129.16"]
 }
 
@@ -53,7 +53,7 @@ resource "azurerm_subnet" "example01" {
   name                 = "peer-subnet-${count.index}"
   resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.example01.name
-  address_prefixes     = [cidrsubnet(var.peer_network_range, var.number_of_subnets, count.index)]
+  address_prefixes     = [cidrsubnet(var.peer_network_range, var.number_of_peering_subnets, count.index)]
 }
 
 resource "azurerm_network_security_group" "example01" {
