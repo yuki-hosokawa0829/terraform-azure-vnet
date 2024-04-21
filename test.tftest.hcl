@@ -96,7 +96,7 @@ run "check_peer_virtual_network_name" {
 run "check_peer_subnet_name" {
   command = plan
   assert {
-    condition     = startswith(azurerm_subnet.example01[var.number_of_subnets - 1].name, "peer-subnet-")
+    condition     = startswith(azurerm_subnet.example01[var.number_of_peering_subnets - 1].name, "peer-subnet-")
     error_message = "Peering Virtual Network name should begin with peer-subnet-."
   }
 }
