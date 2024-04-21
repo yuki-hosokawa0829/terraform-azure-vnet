@@ -13,7 +13,17 @@ variable "resource_group_name" {
   type        = string
 }
 
-locals {
-  network_range     = "192.168.0.0/24"
-  number_of_subnets = 3
+variable "network_range" {
+  description = "The address space that is used by the virtual network."
+  type        = string
+}
+
+variable "peer_network_range" {
+  description = "The address space that is used by the virtual network."
+  type        = string
+}
+
+variable "number_of_subnets" {
+  description = "The number of subnets to create within the virtual network."
+  type        = number
 }
