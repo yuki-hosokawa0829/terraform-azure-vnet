@@ -141,7 +141,7 @@ run "check_peer_subnet_address_range" {
   command = plan
 
   assert {
-    condition     = azurerm_subnet.example01[var.number_of_peering_subnets - 1].address_prefixes[0] == cidrsubnet(var.peer_network_range, var.number_of_subnets, var.number_of_subnets - 1)
+    condition     = azurerm_subnet.example01[var.number_of_peering_subnets - 1].address_prefixes[0] == cidrsubnet(var.peer_network_range, var.number_of_peering_subnets, var.number_of_peering_subnets - 1)
     error_message = "Subnet range should between ${cidrsubnet(var.peer_network_range, var.number_of_peering_subnets, 0)} and ${cidrsubnet(var.peer_network_range, var.number_of_peering_subnets, var.number_of_peering_subnets - 1)}"
   }
 }
